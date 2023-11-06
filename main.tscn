@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://cka57hbcrjna4"]
+
+[ext_resource type="Script" path="res://CharacterBody Controller.gd" id="1_fiqa5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tohjm"]
+size = Vector2(40, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rom8n"]
+size = Vector2(50, 5)
+
+[node name="Main" type="Node2D"]
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+position = Vector2(372, 238)
+node_a = NodePath("../Mouse CharacterBody2D")
+node_b = NodePath("../Knife")
+
+[node name="Mouse CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(372, 238)
+script = ExtResource("1_fiqa5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mouse CharacterBody2D"]
+shape = SubResource("RectangleShape2D_tohjm")
+
+[node name="Knife" type="RigidBody2D" parent="."]
+position = Vector2(318, 239)
+angular_damp_mode = 1
+angular_damp = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Knife"]
+shape = SubResource("RectangleShape2D_rom8n")
+
+[node name="Polygon2D" type="Polygon2D" parent="Knife"]
+color = Color(0.596078, 0.596078, 0.596078, 1)
+polygon = PackedVector2Array(-2, -3, -26, -3, -22, 3, -2, 3, 10, 3, 10, -3)
+
+[node name="Polygon2D2" type="Polygon2D" parent="Knife"]
+position = Vector2(-318, -239)
+color = Color(0.376471, 0.203922, 0.0588235, 1)
+polygon = PackedVector2Array(326, 236, 326, 243, 340, 243, 340, 236)
